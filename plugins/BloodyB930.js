@@ -125,7 +125,7 @@ export function ControllableParameters() {
         { "property": "forcedColor", "group": "lighting", "label": "Forced Color",
           "min": "0", "max": "360", "type": "color", "default": "#00b3ff" },
         { "property": "Brightness", "group": "lighting", "label": "Brightness (%)",
-          "step": "5", "type": "number", "min": "0", "max": "300", "default": "300" },
+          "step": "5", "type": "number", "min": "0", "max": "100", "default": "100" },
         { "property": "shutdownColor", "group": "lighting", "label": "Shutdown Color",
           "min": "0", "max": "360", "type": "color", "default": "#000000" },
         { "property": "EnableSideBars", "group": "lighting", "label": "Enable Side Bars",
@@ -218,7 +218,7 @@ function hexToRgb(hex) {
 function applyBrightness(col) {
     var pct = Number(Brightness);
     if (isNaN(pct)) pct = 100;
-        pct = Math.max(0, Math.min(300, pct)) / 100;
+    pct = Math.max(0, Math.min(100, pct)) / 100;
     return [
         Math.min(255, Math.round(col[0] * pct)),
         Math.min(255, Math.round(col[1] * pct)),

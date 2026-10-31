@@ -23,7 +23,7 @@ export function ControllableParameters(){
 		{"property":"shutdownColor", "group":"lighting", "label":"Shutdown Color", description: "This color is applied to the device when the System, or SignalRGB is shutting down", "min":"0", "max":"360", "type":"color", "default":"#000000"},
 		{"property":"LightingMode", "group":"lighting", "label":"Lighting Mode", description: "Determines where the device's RGB comes from. Canvas will pull from the active Effect, while Forced will override it to a specific color", "type":"combobox", "values":["Canvas", "Forced"], "default":"Canvas"},
 		{"property":"forcedColor", "group":"lighting", "label":"Forced Color", description: "The color used when 'Forced' Lighting Mode is enabled", "min":"0", "max":"360", "type":"color", "default":"#009bde"},
-		{"property":"Brightness", "group":"lighting", "label":"Brightness (%)", "step":"5", "type":"number", "min":"0", "max":"300", "default":"300"},
+		{"property":"Brightness", "group":"lighting", "label":"Brightness (%)", "step":"5", "type":"number", "min":"0", "max":"100", "default":"100"},
 		{"property":"settingControl", "group":"mouse", "label":"Enable Setting Control", description: "SignalRGB will not attempt to set mouse settings like DPI and Polling Rate while this is disabled", "type":"boolean", "default":"false"},
 		{"property":"dpi1", "group":"mouse", "label":"DPI", "step":"50", "type":"number", "min":"200", "max":"12400", "default":"800", "live" : "false"},
 	];
@@ -160,7 +160,7 @@ function hexToRgb(hex) {
 function applyBrightness(color) {
 	let pct = Number(Brightness);
 	if (isNaN(pct)) pct = 100;
-	pct = Math.max(0, Math.min(300, pct)) / 100;
+	pct = Math.max(0, Math.min(100, pct)) / 100;
 	return [
 		Math.min(255, Math.round(color[0] * pct)),
 		Math.min(255, Math.round(color[1] * pct)),
